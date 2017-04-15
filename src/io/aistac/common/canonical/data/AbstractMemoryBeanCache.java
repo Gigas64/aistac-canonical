@@ -1,8 +1,9 @@
 /*
  * @(#)ObjectStore.java
  *
- * Copyright:	Copyright (c) 2016
- * Company:		Oathouse.com Ltd
+ * Copyright:       Copyright (c) 2017
+ * Organisation:    opengrass.io aistac.io oatridge.io
+ * Schema:          Adaptive, Intelligent, Single Task Application Concern (AI-STAC)
  */
 package io.aistac.common.canonical.data;
 
@@ -15,7 +16,8 @@ import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.TimeUnit;
 
 /**
- * The {@code AbstractMemoryBeanCache} Class
+ * The {@code AbstractMemoryBeanCache} Class that provides the abstract factory for the storage of ObjectBean object
+ * within a memory cache.
  *
  * @author Darryl Oatridge
  * @version 1.00 17-Mar-2016
@@ -220,7 +222,7 @@ public abstract class AbstractMemoryBeanCache<T extends ObjectBean> extends Valu
      * P R O T E C T E D    S E T    M E T H O D S
      * ******************************************
      */
-    
+
     /**
      * Saves an object to a specified key
      *

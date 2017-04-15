@@ -1,18 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/*
  * @(#)TaskPropertiesService.java
  *
- * Copyright:	Copyright (c) 2016
- * Company:		Oathouse.com Ltd
+ * Copyright:       Copyright (c) 2017
+ * Organisation:    opengrass.io aistac.io oatridge.io
+ * Schema:          Adaptive, Intelligent, Single Task Application Concern (AI-STAC)
  */
 package io.aistac.common.canonical.properties;
 
-import io.aistac.common.canonical.valueholder.ValueHolder;
 import io.aistac.common.canonical.log.LoggerQueueService;
+import io.aistac.common.canonical.valueholder.ValueHolder;
 import java.util.Map;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentSkipListMap;
@@ -38,14 +34,14 @@ public final class TaskPropertiesService {
      * @return the TASK_OWNER
      */
     public static String TASK_OWNER() {
-        return TaskPropertiesService.getProp("stam.task.owner", "SingleTask_Unnamed");
+        return TaskPropertiesService.getProp("aistac.task.owner", "SingleTask_Unnamed");
     }
 
     /**
      * @return the TASK_INSTANCE
      */
     public static String TASK_INSTANCE() {
-        return TaskPropertiesService.getProp("stam.task.instance", "UNDEFINED");
+        return TaskPropertiesService.getProp("aistac.task.instance", "UNDEFINED");
     }
 
     // to stop initialising when initialised
@@ -85,13 +81,13 @@ public final class TaskPropertiesService {
     public synchronized TaskPropertiesService init() {
         if(!initialised) {
             // Task owner
-            this.add("stam.task.owner", "SingleTask_Unnamed");
+            this.add("aistac.task.owner", "SingleTask_Unnamed");
             // Task instance
-            this.add("stam.task.instance", ValueHolder.uniqueName("SingleTask_Unnamed", "instance")); // the instance reference
+            this.add("aistac.task.instance", ValueHolder.uniqueName("SingleTask_Unnamed", "instance")); // the instance reference
             // Security values
-            this.add("microlib.base.security.cipher.key", "6yHn48"); // cipher key length must be at least 6
+            this.add("aistac.common.security.cipher.key", "6yHn48"); // cipher key length must be at least 6
             // ObjectBean xml root
-            this.add("microlib.base.objectbean.xml.root", "Oathouse");
+            this.add("aistac.common.objectbean.xml.root", "AIStac");
         }
         initialised = true;
         return (this);

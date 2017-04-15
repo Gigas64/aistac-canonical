@@ -1,8 +1,9 @@
 /*
  * @(#)AbstractBits.java
  *
- * Copyright:	Copyright (c) 2010
- * Company:		Oathouse.com Ltd
+ * Copyright:       Copyright (c) 2017
+ * Organisation:    opengrass.io aistac.io oatridge.io
+ * Schema:          Adaptive, Intelligent, Single Task Application Concern (AI-STAC)
  */
 package io.aistac.common.canonical.valueholder;
 
@@ -10,8 +11,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 

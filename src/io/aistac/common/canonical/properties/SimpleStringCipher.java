@@ -1,8 +1,9 @@
 /*
  * @(#)SimpleStringCipher.java
  *
- * Copyright:	Copyright (c) 2012
- * Company:		Oathouse.com Ltd
+ * Copyright:       Copyright (c) 2017
+ * Organisation:    opengrass.io aistac.io oatridge.io
+ * Schema:          Adaptive, Intelligent, Single Task Application Concern (AI-STAC)
  */
 package io.aistac.common.canonical.properties;
 
