@@ -28,7 +28,7 @@ public class ObjectBeanQueue<T extends ObjectBean> extends LinkedBlockingQueue<T
     private static final long serialVersionUID = -335585515331551984L;
 
     private final static LoggerQueueService LOGGER = LoggerQueueService.getInstance();
-    private final static String QUEUE = "CANONICAL.QUEUE";
+    private final static String QUEUE = "AI-STAC.CANONICAL.QUEUE";
 
     /**
      * Creates a {@code MessageQueue} with a capacity of {@link Integer#MAX_VALUE}.

@@ -36,7 +36,7 @@ public class SimpleStringCipher {
 
     static {
         try {
-            SECRET = StringUtils.substring(TaskPropertiesService.getProp("microlib.base.security.cipher.key","9£5nH3") + TaskPropertiesService.CODE + "9Uj&S", -16);
+            SECRET = StringUtils.substring(TaskPropertiesService.getProp("aistac.security.cipher.key","9£5nH3") + TaskPropertiesService.CODE + "9Uj&S", -16);
             KEY = new SecretKeySpec(SECRET.getBytes(), "AES"); // AES is a 128-bit block cipher supporting keys of 128, 192, and 256 bits.
             CIPHER = Cipher.getInstance("AES/ECB/PKCS5Padding", "SunJCE");
             CODER = new Base64(32, LINEBREAK, true);

@@ -14,7 +14,14 @@ import java.util.concurrent.ConcurrentSkipListSet;
 import java.util.concurrent.TimeUnit;
 
 /**
- * The {@code ValueHolder} Class
+ * The {@code ValueHolder} Class is used to generate unique references both String and Integer types.
+ *
+ * The String reference can optionally be prefixed and suffixed with user defined Strings which are, if used,
+ * separated with a full stop (.).
+ *
+ * The Integer identifier can be a sequential value continuing to increase of a fill value defined from an exclusion
+ * list passed to the method. The integer value can be reserved for a defined period of time to avoid reuse from
+ * parallel process requests.
  *
  * @author Darryl Oatridge
  * @version 1.00 03-Apr-2016
@@ -28,7 +35,7 @@ public class ValueHolder {
     }
 
     /**
-     * Generates a unique queue name. Don't include any pre or post dots
+     * Generates a unique queue name. Don't include any pre or post dots as these are included as separators
      *
      * @param prefix a prefix for the name of the queue
      * @param suffix a suffix for the name

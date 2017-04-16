@@ -9,6 +9,7 @@ package io.aistac.common.canonical.valueholder;
 
 import io.aistac.common.canonical.exceptions.OathouseException;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.LinkedList;
@@ -56,7 +57,7 @@ public class AbstractBitsTester {
         Object obj = null;
         try {
             obj = ConstructorUtils.invokeConstructor(cls);
-        } catch(Exception ex) {
+        } catch(IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException ex) {
             fail(cls.getName() + " failed to initialise with blank constructor, " + ex.getClass().getSimpleName());
         }
         assertNotNull(simpleClsName + " initalisation returned null", obj);

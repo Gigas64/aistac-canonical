@@ -71,7 +71,7 @@ import org.jdom2.output.XMLOutputter;
  */
 public abstract class ObjectBean implements Serializable, Comparable<ObjectBean> {
 
-    public static final String ROOTNAME = TaskPropertiesService.getProp("base.objectbean.xml.root", "Oathouse");
+    public static final String ROOTNAME = TaskPropertiesService.getProp("aistac.objectbean.xml.root", "aistac");
     private static final long serialVersionUID = 20100713103L;
     private volatile int identifier;
     private volatile int groupKey;
