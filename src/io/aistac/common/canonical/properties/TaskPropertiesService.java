@@ -85,9 +85,9 @@ public final class TaskPropertiesService {
             // Task instance
             this.add("aistac.task.instance", ValueHolder.uniqueName("SingleTask_Unnamed", "instance")); // the instance reference
             // Security values
-            this.add("aistac.common.security.cipher.key", "6yHn48"); // cipher key length must be at least 6
+            this.add("aistac.canonical.security.cipher.key", "6yHn48"); // cipher key length must be at least 6
             // ObjectBean xml root
-            this.add("aistac.common.objectbean.xml.root", "AIStac");
+            this.add("aistac.canonical.objectbean.xml.root", "aistac");
         }
         initialised = true;
         return (this);

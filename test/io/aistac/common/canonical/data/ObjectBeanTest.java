@@ -7,7 +7,7 @@ package io.aistac.common.canonical.data;
 // common imports
 import io.aistac.common.canonical.data.BeanTester;
 import io.aistac.common.canonical.data.ObjectBean;
-import io.aistac.common.canonical.exceptions.OathouseException;
+import io.aistac.common.canonical.exceptions.AiStacSchemaException;
 import static io.aistac.common.canonical.data.ObjectBean.XmlFormat.*;
 import io.aistac.common.canonical.data.example.BeanBuilder;
 import io.aistac.common.canonical.data.example.ExampleBean;
@@ -66,7 +66,7 @@ public class ObjectBeanTest {
     }
 
     @Test
-    public void testBean() throws OathouseException {
+    public void testBean() throws AiStacSchemaException {
         for(ObjectBeanTestList obe : ObjectBeanTestList.values()) {
             BeanTester.testObjectBean(obe.getCls(), obe.isPrintXml());
         }

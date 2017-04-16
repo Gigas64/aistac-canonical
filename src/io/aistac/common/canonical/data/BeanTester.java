@@ -7,7 +7,7 @@
  */
 package io.aistac.common.canonical.data;
 
-import io.aistac.common.canonical.exceptions.OathouseException;
+import io.aistac.common.canonical.exceptions.AiStacSchemaException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -47,19 +47,19 @@ public class BeanTester<T> {
         }
     }
 
-    public static void testObjectBean(String fullClsName, boolean isPrintXml) throws OathouseException {
+    public static void testObjectBean(String fullClsName, boolean isPrintXml) throws AiStacSchemaException {
         testObjectBean(fullClsName, isPrintXml, false, null);
     }
 
-    public static void testObjectBean(String fullClsName, boolean isPrintXml, boolean isGroupKey) throws OathouseException {
+    public static void testObjectBean(String fullClsName, boolean isPrintXml, boolean isGroupKey) throws AiStacSchemaException {
         testObjectBean(fullClsName, isPrintXml, isGroupKey, null);
     }
 
-    public static void testObjectBean(String fullClsName, boolean isPrintXml, List<String> exemptMethods) throws OathouseException {
+    public static void testObjectBean(String fullClsName, boolean isPrintXml, List<String> exemptMethods) throws AiStacSchemaException {
         testObjectBean(fullClsName, isPrintXml, false, exemptMethods);
     }
 
-    public static void testObjectBean(String fullClsName, boolean isPrintXml, boolean isGroupKey, List<String> exemptMethods) throws OathouseException {
+    public static void testObjectBean(String fullClsName, boolean isPrintXml, boolean isGroupKey, List<String> exemptMethods) throws AiStacSchemaException {
         if(exemptMethods == null) {
             exemptMethods = new LinkedList<>();
         }
@@ -85,18 +85,18 @@ public class BeanTester<T> {
 
     }
 
-    private static Class<?> getClass(String fullClsName) throws OathouseException {
+    private static Class<?> getClass(String fullClsName) throws AiStacSchemaException {
         Class<?> cls = null;
         try {
             cls = Class.forName(fullClsName);
         } catch(ClassNotFoundException classNotFoundException) {
-            throw new OathouseException(fullClsName + " does not exist. Class not found!");
+            throw new AiStacSchemaException(fullClsName + " does not exist. Class not found!");
         }
         assertNotNull(fullClsName + ".forName() returned null", cls);
         return (cls);
     }
 
-    private static ObjectBean getObjectBeanInstance(Class<?> cls, Object[] params) throws OathouseException {
+    private static ObjectBean getObjectBeanInstance(Class<?> cls, Object[] params) throws AiStacSchemaException {
         String simpleClsName = cls.getSimpleName();
         Object obj = null;
         try {
@@ -109,7 +109,7 @@ public class BeanTester<T> {
         return ((ObjectBean) obj);
     }
 
-    private static void testAttributeInit(Class<?> cls, ObjectBean obInstance) throws OathouseException {
+    private static void testAttributeInit(Class<?> cls, ObjectBean obInstance) throws AiStacSchemaException {
         String simpleClsName = cls.getSimpleName();
         while(cls != null) {
             for(Field field : cls.getDeclaredFields()) {
@@ -122,7 +122,7 @@ public class BeanTester<T> {
         }
     }
 
-    private static void checkConstructors(Class<?> cls, ObjectBean obInstance, boolean isGroupKey) throws OathouseException {
+    private static void checkConstructors(Class<?> cls, ObjectBean obInstance, boolean isGroupKey) throws AiStacSchemaException {
         String simpleClsName = cls.getSimpleName();
         Constructor<?>[] constructors = cls.getDeclaredConstructors();
         boolean isZero = false;
@@ -168,7 +168,7 @@ public class BeanTester<T> {
         assertEquals(simpleClsName + " constructor does not have the correct ammount of parameters", fieldCount, paramCount);
     }
 
-    private static void testGetMethods(Class<?> cls, ObjectBean obInstance, boolean isGroupKey, List<String> exempt) throws OathouseException {
+    private static void testGetMethods(Class<?> cls, ObjectBean obInstance, boolean isGroupKey, List<String> exempt) throws AiStacSchemaException {
         String simpleClsName = cls.getSimpleName();
         Class<?>[] params = {Object.class};
         List<String> methodList = Stream.of("getId","equals","hashCode").collect(Collectors.toList());
@@ -227,7 +227,7 @@ public class BeanTester<T> {
         }
     }
 
-    private static void testSetMethods(Class<?> cls, ObjectBean obInstance,  List<String> exempt) throws OathouseException {
+    private static void testSetMethods(Class<?> cls, ObjectBean obInstance,  List<String> exempt) throws AiStacSchemaException {
         String simpleClsName = cls.getSimpleName();
         for(Method method : cls.getDeclaredMethods()) {
             StringBuilder sb = new StringBuilder();
@@ -295,7 +295,7 @@ public class BeanTester<T> {
 
     }
 
-    public static void testXml(Class<?> cls, ObjectBean obInstance, boolean isPrintXml) throws OathouseException {
+    public static void testXml(Class<?> cls, ObjectBean obInstance, boolean isPrintXml) throws AiStacSchemaException {
         String simpleClsName = cls.getSimpleName();
         LinkedList<String> classNames = new LinkedList<String>();
         Class<?> checkCls = cls;
@@ -353,7 +353,7 @@ public class BeanTester<T> {
 
     }
 
-    private static void checkAllValuesSet(Class<?> cls, ObjectBean obInstance, String request) throws OathouseException {
+    private static void checkAllValuesSet(Class<?> cls, ObjectBean obInstance, String request) throws AiStacSchemaException {
         String simpleClsName = cls.getSimpleName() + request;
         while(cls != null) {
             for(Field field : cls.getDeclaredFields()) {
@@ -369,15 +369,15 @@ public class BeanTester<T> {
     /* ***************************************
      * SET the values in the bean
      ******************************************/
-    public static void setFields(Class<?> cls, ObjectBean obInstance) throws OathouseException {
+    public static void setFields(Class<?> cls, ObjectBean obInstance) throws AiStacSchemaException {
         setFields(cls, obInstance, 1, new HashMap<String, String>());
     }
 
-    public static void setFields(Class<?> cls, ObjectBean obInstance, int seed) throws OathouseException {
+    public static void setFields(Class<?> cls, ObjectBean obInstance, int seed) throws AiStacSchemaException {
         setFields(cls, obInstance, seed, new HashMap<String, String>());
     }
 
-    public static void setFields(Class<?> cls, ObjectBean obInstance, int seed, Map<String, String> fieldSets) throws OathouseException {
+    public static void setFields(Class<?> cls, ObjectBean obInstance, int seed, Map<String, String> fieldSets) throws AiStacSchemaException {
         int counter = seed * 15;
         String simpleClsName = cls.getSimpleName();
         if(fieldSets.containsKey("id")) {
@@ -415,7 +415,7 @@ public class BeanTester<T> {
 
     @SuppressWarnings("unchecked")
     private static Field setField(Field field, ObjectBean obInstance, String simpleClsName, int valueCount,
-            Map<String, String> fieldSets) throws OathouseException {
+            Map<String, String> fieldSets) throws AiStacSchemaException {
 
         boolean isPreset = fieldSets.containsKey(field.getName()) ? true : false;
         if(!Modifier.isPublic(field.getModifiers())) {
@@ -477,7 +477,7 @@ public class BeanTester<T> {
                     fail(sb.toString() + " Unchecked " + fieldValue.getClass().getSimpleName() + " type");
                 }
 
-            } catch(IllegalArgumentException | IllegalAccessException | OathouseException ex) {
+            } catch(IllegalArgumentException | IllegalAccessException | AiStacSchemaException ex) {
                 fail(sb.toString() + " threw an exception : " + ex.getMessage());
             }
         }
@@ -485,7 +485,7 @@ public class BeanTester<T> {
         return field;
     }
 
-    private static void checkField(Field field, ObjectBean obInstance, String simpleClsName, boolean isInit) throws OathouseException {
+    private static void checkField(Field field, ObjectBean obInstance, String simpleClsName, boolean isInit) throws AiStacSchemaException {
         if(!Modifier.isPublic(field.getModifiers())) {
             field.setAccessible(true);
         }
@@ -668,11 +668,11 @@ public class BeanTester<T> {
     /* **************************
      * methods to mirror Junit
      * **************************/
-    static private void fail(String message) throws OathouseException {
-        throw new OathouseException(message == null ? "" : message);
+    static private void fail(String message) throws AiStacSchemaException {
+        throw new AiStacSchemaException(message == null ? "" : message);
     }
 
-    static private void assertEquals(String message, Object expected, Object actual) throws OathouseException {
+    static private void assertEquals(String message, Object expected, Object actual) throws AiStacSchemaException {
         if(expected == null && actual == null) {
             return;
         }
@@ -682,21 +682,21 @@ public class BeanTester<T> {
         fail(message + " - Equals Failed: Expected " + expected.toString() + " but was " + actual.toString());
     }
 
-    static private void assertTrue(String message, boolean condition) throws OathouseException {
+    static private void assertTrue(String message, boolean condition) throws AiStacSchemaException {
         if(!condition) {
             fail(message);
         }
     }
 
-    static private void assertFalse(String message, boolean condition) throws OathouseException {
+    static private void assertFalse(String message, boolean condition) throws AiStacSchemaException {
         assertTrue(message, !condition);
     }
 
-    static private void assertNotNull(String message, Object object) throws OathouseException {
+    static private void assertNotNull(String message, Object object) throws AiStacSchemaException {
         assertTrue(message, object != null);
     }
 
-    static private void assertNotSame(String message, Object unexpected, Object actual) throws OathouseException {
+    static private void assertNotSame(String message, Object unexpected, Object actual) throws AiStacSchemaException {
         if(unexpected.equals(actual)) {
             fail(message + " - Expected " + unexpected + " to NOT equal " + actual);
         }

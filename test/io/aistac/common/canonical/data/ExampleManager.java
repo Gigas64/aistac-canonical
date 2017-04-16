@@ -6,12 +6,9 @@
 /*
  * @(#)ExampleManager.java
  *
- * Copyright:	Copyright (c) 2016
- * Company:		Oathouse.com Ltd
  */
 package io.aistac.common.canonical.data;
 
-import io.aistac.common.canonical.data.AbstractMemoryBeanCache;
 import io.aistac.common.canonical.data.example.ExampleBean;
 import java.util.LinkedList;
 import java.util.List;

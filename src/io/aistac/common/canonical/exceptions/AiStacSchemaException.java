@@ -9,13 +9,13 @@
 package io.aistac.common.canonical.exceptions;
 
 /**
- * The {@code OathouseException} Class is the super class of all oathouse
+ * The {@code AiStacSchemaException} Class is the super class of all AI-STAC schema exceptions
  * exceptions
  *
  * @author      Darryl Oatridge
  * @version 	1.00 29-Jun-2009
  */
-public class OathouseException extends Exception {
+public class AiStacSchemaException extends Exception {
     private static final long serialVersionUID = -7208081664891963383L;
     private final SEVERITY severity;
 
@@ -33,7 +33,7 @@ public class OathouseException extends Exception {
      * The severity level is set to medium, application error.
      * @param msg the detail message.
      */
-    public OathouseException(String msg) {
+    public AiStacSchemaException(String msg) {
         super(msg);
         this.severity = SEVERITY.MEDIUM;
     }
@@ -44,7 +44,7 @@ public class OathouseException extends Exception {
      * @param severity the severity level of the Exception
      * @param msg the detail message.
      */
-    public OathouseException(SEVERITY severity, String msg) {
+    public AiStacSchemaException(SEVERITY severity, String msg) {
         super(msg);
         this.severity = severity;
     }

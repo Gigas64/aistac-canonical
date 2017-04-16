@@ -7,8 +7,6 @@
 /*
  * @(#)ExampleTaskHandler.java
  *
- * Copyright:	Copyright (c) 2016
- * Company:		Oathouse.com Ltd
  */
 package io.aistac.common.canonical.handler;
 

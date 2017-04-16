@@ -7,7 +7,7 @@
  */
 package io.aistac.common.canonical.valueholder;
 
-import io.aistac.common.canonical.exceptions.OathouseException;
+import io.aistac.common.canonical.exceptions.AiStacSchemaException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
@@ -28,11 +28,11 @@ import org.apache.commons.lang3.reflect.ConstructorUtils;
  */
 public class AbstractBitsTester {
 
-    public static void testBits(String fullClsName) throws OathouseException {
+    public static void testBits(String fullClsName) throws AiStacSchemaException {
         AbstractBitsTester.testBits(fullClsName, new LinkedList<>());
     }
 
-    public static void testBits(String fullClsName, List<String> exemptBitNames) throws OathouseException {
+    public static void testBits(String fullClsName, List<String> exemptBitNames) throws AiStacSchemaException {
         // add exempts that are in AbstractBits class
         exemptBitNames.addAll(Stream.of("UNDEFINED","NO_VALUE","ALL_ON").collect(Collectors.toList()));
         // check the instance
@@ -41,18 +41,18 @@ public class AbstractBitsTester {
         checkBits(getClass(fullClsName), exemptBitNames);
     }
 
-    private static Class<?> getClass(String fullClsName) throws OathouseException {
+    private static Class<?> getClass(String fullClsName) throws AiStacSchemaException {
         Class<?> cls = null;
         try {
             cls = Class.forName(fullClsName);
         } catch(ClassNotFoundException classNotFoundException) {
-            throw new OathouseException(fullClsName + " does not exist. Class not found!");
+            throw new AiStacSchemaException(fullClsName + " does not exist. Class not found!");
         }
         assertNotNull(fullClsName + ".forName() returned null", cls);
         return (cls);
     }
 
-    private static void checkInstance(Class<?> cls) throws OathouseException {
+    private static void checkInstance(Class<?> cls) throws AiStacSchemaException {
         String simpleClsName = cls.getSimpleName();
         Object obj = null;
         try {
@@ -65,7 +65,7 @@ public class AbstractBitsTester {
     }
 
     @SuppressWarnings("AssignmentToMethodParameter")
-    private static void checkBits(Class<?> cls, List<String> exempt) throws OathouseException {
+    private static void checkBits(Class<?> cls, List<String> exempt) throws AiStacSchemaException {
         String simpleClsName = cls.getSimpleName();
         Set<Integer> checkSet = new TreeSet<>();
         while(cls != null) {
@@ -85,7 +85,7 @@ public class AbstractBitsTester {
         }
     }
 
-    private static SimpleEntry<Integer,String> checkField(Field field, String simpleClsName) throws OathouseException {
+    private static SimpleEntry<Integer,String> checkField(Field field, String simpleClsName) throws AiStacSchemaException {
         StringBuilder sb = new StringBuilder();
         sb.append(simpleClsName);
         sb.append(" [");
@@ -119,18 +119,18 @@ public class AbstractBitsTester {
             }
             return new SimpleEntry<>(value, sb.toString());
         } catch(Exception ex) {
-            throw new OathouseException(ex.getMessage());
+            throw new AiStacSchemaException(ex.getMessage());
         }
     }
 
     /* **************************
      * methods to mirror Junit
      * **************************/
-    static private void fail(String message) throws OathouseException {
-        throw new OathouseException(message == null ? "" : message);
+    static private void fail(String message) throws AiStacSchemaException {
+        throw new AiStacSchemaException(message == null ? "" : message);
     }
 
-    static private void assertEquals(String message, Object expected, Object actual) throws OathouseException {
+    static private void assertEquals(String message, Object expected, Object actual) throws AiStacSchemaException {
         if(expected == null && actual == null) {
             return;
         }
@@ -140,21 +140,21 @@ public class AbstractBitsTester {
         fail(message + " - Equals Failed: Expected " + expected.toString() + " but was " + actual.toString());
     }
 
-    static private void assertTrue(String message, boolean condition) throws OathouseException {
+    static private void assertTrue(String message, boolean condition) throws AiStacSchemaException {
         if(!condition) {
             fail(message);
         }
     }
 
-    static private void assertFalse(String message, boolean condition) throws OathouseException {
+    static private void assertFalse(String message, boolean condition) throws AiStacSchemaException {
         assertTrue(message, !condition);
     }
 
-    static private void assertNotNull(String message, Object object) throws OathouseException {
+    static private void assertNotNull(String message, Object object) throws AiStacSchemaException {
         assertTrue(message, object != null);
     }
 
-    static private void assertNotSame(String message, Object unexpected, Object actual) throws OathouseException {
+    static private void assertNotSame(String message, Object unexpected, Object actual) throws AiStacSchemaException {
         if(unexpected.equals(actual)) {
             fail(message + " - Expected " + unexpected + " to NOT equal " + actual);
         }

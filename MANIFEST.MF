@@ -1,16 +1,16 @@
 Manifest-Version: 1.0
-Ant-Version: Apache Ant 1.9.4
-Created-By: 1.8.0_74-b02 (Oracle Corporation)
-Built-By: Darryl
+Ant-Version: Apache Ant 1.9.7
+Created-By: 1.8.0_121-b13 (Oracle Corporation)
+Built-By: darry
 Main-Class: com.oathouse.oss.server.ObjectStoreServer
 
-Name: OathouseCanonical
-Specification-Title: OathouseCanonical library
-Specification-Version: 1.01
-Specification-Vendor: Oathouse.com Ltd
-Implementation-Title: OathouseCanonical release patch
-Implementation-Version: 152
-Implementation-Vendor: Oathouse.com Ltd
+Name: aistac-canonical
+Specification-Title: aistac-canonical library
+Specification-Version: 2.01
+Specification-Vendor: aistac.io
+Implementation-Title: aistac-canonical release patch
+Implementation-Version: 006
+Implementation-Vendor: aistac.io
 
 Name: ${manifest.section.package}
 Sealed: false

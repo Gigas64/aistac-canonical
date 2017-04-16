@@ -128,7 +128,7 @@ public class MicroLibPropertiesTest {
 
     @Test
     public void testContains() {
-        assertThat(props.contains("microlib.base.objectbean.xml.root"), is(true));
+        assertThat(props.contains("aistac.canonical.objectbean.xml.root"), is(true));
         assertThat(props.contains("NoProp"), is(false));
     }
 

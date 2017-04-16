@@ -1,8 +1,6 @@
 /*
  * @(#)BeanFactory.java
  *
- * Copyright:	Copyright (c) 2010
- * Company:		Oathouse.com Ltd
  */
 package io.aistac.common.canonical.data.example;
 

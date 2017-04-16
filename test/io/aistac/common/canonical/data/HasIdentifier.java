@@ -1,8 +1,6 @@
 /*
  * @(#)HasName.java
  *
- * Copyright:	Copyright (c) 2016
- * Company:		Oathouse.com Ltd
  */
 package io.aistac.common.canonical.data;
 
@@ -26,7 +24,7 @@ public interface HasIdentifier {
     default int getId() {
         return Extensions.map.get(this);
     }
-    
+
     default void setId(int identifier) {
         Extensions.map.put(this, identifier);
     }

@@ -14,7 +14,7 @@ package io.aistac.common.canonical.exceptions;
  * @author 	Darryl Oatridge
  * @version 	1.00 29-Jun-2009
  */
-public class ObjectBeanException extends OathouseException {
+public class ObjectBeanException extends AiStacSchemaException {
     private static final long serialVersionUID = -7592630156355006762L;
 
     /**
