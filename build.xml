@@ -96,7 +96,7 @@
         <touch file="${tmp.manifest.file}" verbose="false"/>
         <manifest file="${manifest.file}">
             <attribute name="Built-By" value="${user.name}" />
-            <attribute name="Main-Class" value="com.oathouse.oss.server.ObjectStoreServer" />
+            <attribute name="Main-Class" value="" />
             <section name="${ant.project.name}">
                 <attribute name="Specification-Title" value="${ant.project.name} ${manifest.specification.title}" />
                 <attribute name="Specification-Version" value="${project.version.major}.${project.version.minor}" />

@@ -28,7 +28,7 @@ public class ObjectBeanQueue<T extends ObjectBean> extends LinkedBlockingQueue<T
     private static final long serialVersionUID = -335585515331551984L;
 
     private final static LoggerQueueService LOGGER = LoggerQueueService.getInstance();
-    private final static String QUEUE = "AI-STAC.CANONICAL.QUEUE";
+    private final static String QUEUE = "CANONICAL.QUEUE";
 
     /**
      * Creates a {@code MessageQueue} with a capacity of {@link Integer#MAX_VALUE}.
@@ -154,7 +154,7 @@ public class ObjectBeanQueue<T extends ObjectBean> extends LinkedBlockingQueue<T
         LOGGER.debug(QUEUE, "Poll from Queue");
         T ob = super.poll();
         LOGGER.debug(QUEUE, "Recived from Queue");
-        LOGGER.trace(QUEUE, "XML: " + ob.toXML(PRINTED, TRIMMED));
+        LOGGER.trace(QUEUE, "XML: " + ob==null?"Null":ob.toXML(PRINTED, TRIMMED));
         return ob;
     }
 
@@ -163,7 +163,11 @@ public class ObjectBeanQueue<T extends ObjectBean> extends LinkedBlockingQueue<T
         LOGGER.debug(QUEUE, "Poll from Queue with timeout");
         T ob = super.poll(timeout, unit);
         LOGGER.debug(QUEUE, "Recived from Queue");
-        LOGGER.trace(QUEUE, "XML: " + ob.toXML(PRINTED, TRIMMED));
+        if(ob instanceof ObjectBean) {
+            LOGGER.trace(QUEUE, "XML: " + ob.toXML(PRINTED, TRIMMED));
+        } else {
+            LOGGER.trace(QUEUE, "XML: NULL");
+        }
         return ob;
     }
 
@@ -172,28 +176,28 @@ public class ObjectBeanQueue<T extends ObjectBean> extends LinkedBlockingQueue<T
         LOGGER.debug(QUEUE, "Take from Queue");
         T ob = super.take();
         LOGGER.debug(QUEUE, "Recived from Queue");
-        LOGGER.trace(QUEUE, "XML: " + ob.toXML(PRINTED, TRIMMED));
+        LOGGER.trace(QUEUE, "XML: " + ob==null?"Null":ob.toXML(PRINTED, TRIMMED));
         return ob;
     }
 
     @Override
     public void put(T e) throws InterruptedException {
         LOGGER.debug(QUEUE, "Put to Queue");
-        LOGGER.trace(QUEUE, "XML: " + e.toXML(PRINTED, TRIMMED));
+        LOGGER.trace(QUEUE, "XML: " + e==null?"Null":e.toXML(PRINTED, TRIMMED));
         super.put(e);
     }
 
     @Override
     public boolean offer(T e) {
         LOGGER.debug(QUEUE, "Offer to Queue");
-        LOGGER.trace(QUEUE, "XML: " + e.toXML(PRINTED, TRIMMED));
+        LOGGER.trace(QUEUE, "XML: " + e==null?"Null":e.toXML(PRINTED, TRIMMED));
        return super.offer(e);
     }
 
     @Override
     public boolean offer(T e, long timeout, TimeUnit unit) throws InterruptedException {
         LOGGER.debug(QUEUE, "Offer to Queue ith timeout");
-        LOGGER.trace(QUEUE, "XML: " + e.toXML(PRINTED, TRIMMED));
+        LOGGER.trace(QUEUE, "XML: " + e==null?"Null":e.toXML(PRINTED, TRIMMED));
         return super.offer(e, timeout, unit);
     }
 }

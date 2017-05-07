@@ -23,7 +23,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
 public final class TaskPropertiesService {
 
     private final static LoggerQueueService LOGGER = LoggerQueueService.getInstance();
-    private final static String PROPS = "AI-STAC.CANONICAL.PROPS";
+    private final static String PROPS = "CANONICAL.PROPS";
 
     // hard coded constants
     static final String CODE = "8sT@o";

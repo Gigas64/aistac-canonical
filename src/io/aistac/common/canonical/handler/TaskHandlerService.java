@@ -26,7 +26,7 @@ import java.util.concurrent.TimeoutException;
 public class TaskHandlerService extends ValueHolder {
 
     private final static LoggerQueueService LOGGER = LoggerQueueService.getInstance();
-    private final static String TASK = "AI-STAC.CANONICAL.TASK";
+    private final static String TASK = "CANONICAL.TASK";
 
     // Singleton Instance
     private volatile static TaskHandlerService INSTANCE;

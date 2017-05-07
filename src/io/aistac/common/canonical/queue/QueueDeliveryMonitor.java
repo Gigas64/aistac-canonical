@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 public class QueueDeliveryMonitor<T extends ObjectBean> implements Runnable, TaskHandlerInterface {
 
     private final static LoggerQueueService LOGGER = LoggerQueueService.getInstance();
-    private final static String MONITOR = "AI-STAC.CANONICAL.QUEUE.MONITOR";
+    private final static String MONITOR = "CANONICAL.QUEUE.MONITOR";
 
     private volatile boolean isRunning;
     private final QueueDeliveryInterface<T> targer;
